@@ -83,13 +83,14 @@ public class PTestImpl {
     }
 
     public static List<String> dropEveryNth(List<String> strings, int element) {
-        List<String> list = new ArrayList<>(strings);
-        for (int i = 0; i < list.size(); i++) {
-            list.remove(element);
-            if (element < strings.size()- element-1) {
-                element += element+1;
+        List<String> list = new ArrayList<>();
+
+        for (int i = 1; i < strings.size()+1; i++) {
+            if(i%element==0){
+                list.add(strings.get(i-1));
             }
         }
-        return list;
+        strings.removeAll(list);
+        return strings;
     }
 }

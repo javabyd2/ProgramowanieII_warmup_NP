@@ -2,6 +2,7 @@ import com.sdabyd2.programowanie.PTestImpl;
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -67,9 +68,20 @@ public class PTests {
     }
     @Test
     public void shouldDropEveryNthElement() throws Exception {
-        List<String> result = PTestImpl.dropEveryNth(
-                Arrays.asList("a", "b", "c", "d", "e",
-                        "f", "g", "h", "i", "j", "k"), 3);
+        List<String> result = new ArrayList<>();
+        result.add("a");
+        result.add("b");
+        result.add("c");
+        result.add("d");
+        result.add("e");
+        result.add("f");
+        result.add("g");
+        result.add("h");
+        result.add("i");
+        result.add("j");
+        result.add("k");
+
+        PTestImpl.dropEveryNth(result, 3);
         assertThat(result, hasSize(8));
         assertThat(result, contains("a", "b", "d", "e", "g", "h", "j", "k"));
     }
